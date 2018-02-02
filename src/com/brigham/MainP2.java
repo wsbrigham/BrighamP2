@@ -1,11 +1,11 @@
-package com.brigham;
-
 /***************************************************************************************************
  *              NAME: William Brigham
  *             EMAIL: wbrigham@cnm.edu
- *    PROPGRAM TITLE: State Capitals Quiz (Quiz.java)
+ *    PROPGRAM TITLE: State Capitals Quiz (MainP2.java)
  * PROGRAM OBJECTIVE: To give a quiz of state capitals and report pass/fail status and issue a grade.
  ****************************************************************************************************/
+
+package com.brigham;
 
 import javax.swing.JOptionPane;
 import java.text.DecimalFormat;
