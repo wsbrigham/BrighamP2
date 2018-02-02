@@ -8,6 +8,7 @@
 package com.brigham;
 
 import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
 
 
 public class QuizUI {
@@ -21,6 +22,7 @@ public class QuizUI {
     private int totalQuestions = 0;                                               //variable for storing the number of questions that are asked
     private int numRight = 0;                                                      //variable for storing the number of correct anwers
     private int numWrong = 0;                                                      //variable for storing the number of incorrect answers
+    private DecimalFormat formatter = new DecimalFormat("#.00");
     private Quiz quiz = new Quiz();
 
 
@@ -115,7 +117,7 @@ public class QuizUI {
 
         //Display quiz summary and letter grade to the user
         JOptionPane.showMessageDialog(null, "              Tester's Name:    " + playerName + "\n\nTotal Questions Asked:    " + totalQuestions + "\n\n          Correct Answers:    "
-                + numRight + "\n\n        Incorrect Answers:    " + numWrong + "\n\n                Percent Grade:    " + /*formatter.format*/(Quiz.numericalGrade) + "%\n\n                    Letter Grade:    "
+                + numRight + "\n\n        Incorrect Answers:    " + numWrong + "\n\n                Percent Grade:    " + formatter.format(Quiz.numericalGrade) + "%\n\n                    Letter Grade:    "
                 + Quiz.letterGrade + "\n", "Capitals Quiz", JOptionPane.INFORMATION_MESSAGE);
 
         //display a good bye message
