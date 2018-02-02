@@ -67,7 +67,7 @@ public class QuizUI {
 
 
     // Constructor(s)
-    public QuizUI() {
+     public QuizUI() {
     }
 
     // Methods
