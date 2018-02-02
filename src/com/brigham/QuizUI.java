@@ -162,7 +162,9 @@ public class QuizUI {
         Quiz quiz = new Quiz(totalQuestions, numRight);
 
         //call quiz class to calculate
-        quiz.calculate();
+        quiz.calculateNumericalGrade();
+
+        quiz.calculateLetterGrade();
 
         String letterGrade = Quiz.letterGrade;
 
