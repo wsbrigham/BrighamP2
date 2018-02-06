@@ -109,7 +109,6 @@ public class Quiz
         //calculate the numerical grade
         numericalGrade = ((double) numRight / (double) totalQuestions) * 100;
     }
-
     
     public void calculateLetterGrade() {
         //calculate letter grade
