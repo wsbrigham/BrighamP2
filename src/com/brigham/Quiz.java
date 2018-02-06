@@ -1,9 +1,9 @@
-/***************************************************************************************************
+/***********************************************************************************************************************
  *              NAME: William Brigham
  *             EMAIL: wbrigham@cnm.edu
  *    PROPGRAM TITLE: State Capitals Quiz (Quiz.java)
- * PROGRAM OBJECTIVE: To give a quiz of state capitals and report pass/fail status and issue a grade.
- ****************************************************************************************************/
+ * CLASS OBJECTIVE: To give a quiz of state capitals and report pass/fail status and issue a grade.
+ **********************************************************************************************************************/
 
 package com.brigham;
 
@@ -12,18 +12,16 @@ import java.util.Random;
 
 public class Quiz
 {
-    private static String letterGrade = "";         //remember this changed                                     //variable for storing the quiz taker's letter grade
-    private static double numericalGrade = 0;          //remember this changed                                  //variable for storing the quiz taker's numerical/percent grade
+    private static String letterGrade = "";                   //variable for storing the quiz taker's letter grade
+    private static double numericalGrade = 0;                 //variable for storing the quiz taker's numerical/percent grade
+    private int totalQuestions;                               //variable for storing the number of questions that are asked
+    private int numRight;                                     //variable for storing the number of correct answers
+    private int[] num = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                        11, 12, 13, 14, 15, 16, 17, 18, 19};  //variable for storing the number of indices
 
+    //******************************************************************************************************************
 
-
-    private int totalQuestions;                                               //variable for storing the number of questions that are asked
-    private int numRight;                                                     //variable for storing the number of correct answers
-    private int[] num = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};  //variable for storing the number of indices
-    //DecimalFormat formatter = new DecimalFormat("#.00");                        //set the precision for numeric/percentage grade
-
-    private String[] questions =                                                          //array for storing the quiz questions
-            {
+    private String[] questions = {
                     "What is the capital of New Mexico?",
                     "What is the capital of Arizona?",
                     "What is the capital of Colorado?",
@@ -46,8 +44,7 @@ public class Quiz
                     "What is the capital of Virginia?"
             };
 
-    private String[] answers =    //array for storing the quiz answers
-            {
+    private String[] answers = {
                     "Santa Fe",
                     "Phoenix",
                     "Denver",
@@ -70,22 +67,32 @@ public class Quiz
                     "Richmond"
             };
 
+    //******************************************************************************************************************
+    //
+
     public Quiz() {}
 
-    // Constructor(s)
+    //******************************************************************************************************************
+    //Construct the Quiz class
      Quiz(int totalQuestions, int numRight) {
         this.totalQuestions = totalQuestions;
         this.numRight = numRight;
     }
 
+    //******************************************************************************************************************
+    //Create a method for retrieving the numerical grade for the quiz results
     public static double getNumericalGrade() {
         return numericalGrade;
     }
 
+    //******************************************************************************************************************
+    //Create a method for retrieving the letter grade for the quiz results
     public String getLetterGrade() {
         return letterGrade;
     }
 
+    //******************************************************************************************************************
+    //Create a method for shuffling the indicies of the questions array
     public void shuffle() {
         for (int i = num.length - 1; i > 0; i--) {
             int j;
@@ -95,21 +102,28 @@ public class Quiz
             num[j] = temp;
         }
     }
-    public String getQuestion() {
 
+    //******************************************************************************************************************
+    //Create a method for retrieving a question to ask the quiz taker
+    public String getQuestion() {
         return questions[num[totalQuestions]];
     }
 
+    //******************************************************************************************************************
+    //Create a method for retrieving the answer to the question asked
     public  String getAnswer() {
-
         return answers[num[totalQuestions]];
     }
 
+    //******************************************************************************************************************
+    //Create a method for calculating the numerical grade
     public void calculateNumericalGrade () {
         //calculate the numerical grade
         numericalGrade = ((double) numRight / (double) totalQuestions) * 100;
     }
-    
+
+    //******************************************************************************************************************
+    //Create method for calculating the letter grade
     public void calculateLetterGrade() {
         //calculate letter grade
         //if the numerical grade is greater than or equal to 91, set 'letterGrade' to "A"*
@@ -138,6 +152,8 @@ public class Quiz
         }
     }
 
+    //******************************************************************************************************************
+    //Set the total questions asked
     public void setTotalQuestions(int totalQuestions) {
         this.totalQuestions = totalQuestions;
     }
