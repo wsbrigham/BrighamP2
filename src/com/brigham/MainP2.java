@@ -13,8 +13,7 @@ import java.util.Random;
 
 public class MainP2
 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         QuizUI ui = new QuizUI();
 
         ui.run();
