@@ -110,6 +110,7 @@ public class Quiz
         numericalGrade = ((double) numRight / (double) totalQuestions) * 100;
     }
 
+    
     public void calculateLetterGrade() {
         //calculate letter grade
         //if the numerical grade is greater than or equal to 91, set 'letterGrade' to "A"*
