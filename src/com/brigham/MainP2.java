@@ -1,8 +1,8 @@
 /***********************************************************************************************************************
  *              NAME: William Brigham
  *             EMAIL: wbrigham@cnm.edu
- *    PROPGRAM TITLE: State Capitals Quiz (MainP2.java)
- * PROGRAM OBJECTIVE: To give a quiz of state capitals and report pass/fail status and issue a grade.
+ *    PROGRAM TITLE: State Capitals Quiz (MainP2.java)
+ * CLASS OBJECTIVE: To drive the Quiz and QuizUI classes
  **********************************************************************************************************************/
 
 package com.brigham;

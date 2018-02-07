@@ -1,7 +1,7 @@
 /***********************************************************************************************************************
  *              NAME: William Brigham
  *             EMAIL: wbrigham@cnm.edu
- *    PROPGRAM TITLE: State Capitals Quiz (QuizUI.java)
+ *    PROGRAM TITLE: State Capitals Quiz (QuizUI.java)
  * CLASS OBJECTIVE: To control the user interface portion of the quiz program
  **********************************************************************************************************************/
 
@@ -16,19 +16,19 @@ public class QuizUI {
     private String theme = "State Capitals Quiz";                        //variable for storing the theme of the quiz
     private String playerName = "";                                      //variable for storing the quiz taker's name
     private String playerAnswer = "";                                    //variable for storing the quiz taker's answer
-    private int playAgain;                                               //variable for storing the quiz taker's choice of weather or not they want to answer more questions
+    private int playAgain;                                               //variable for storing the players choice to continue
     private int totalQuestions = 0;                                      //variable for storing the number of questions that are asked
     private int numRight = 0;                                            //variable for storing the number of correct answers
     private int numWrong = 0;                                            //variable for storing the number of incorrect answers
-    private DecimalFormat formatter = new DecimalFormat("#.00");  //
+    private DecimalFormat formatter = new DecimalFormat("#.00");  //create number formatter
     private Quiz quiz = new Quiz();
 
     //******************************************************************************************************************
-
+    //construct quizUI
      public QuizUI() {}
 
-     //*****************************************************************************************************************
-
+    //*****************************************************************************************************************
+    // run the program
     public void run() {
         //display program header
         JOptionPane.showMessageDialog(null, "                               NAME:  William Brigham\n\n           "
@@ -56,9 +56,6 @@ public class QuizUI {
                 + "another question. If you choose not to try again, your average will be calculated and your grade"
                 + " will be displayed.\n\nClick OK to continue.\n", "Capitals Quiz", JOptionPane.INFORMATION_MESSAGE);
 
-        //**************************************************************************************************************
-
-        quiz.shuffle();
 
         //**************************************************************************************************************
         //start a do...while loop that continues to run until the user choose not to answer more questions
@@ -66,20 +63,13 @@ public class QuizUI {
             //start a do...while loop that continues to run as long as the user doesn't input a value for the capital
             do {
 
-         //*************************************************************************************************************
-        //shuffle the indices of the questions array once 20 questions have been asked
-                if (totalQuestions == 20) {
-                   quiz.shuffle();
-                   totalQuestions = 0;
-                }
-
-        //**************************************************************************************************************
-        //display a message asking the user what the capital of a state is and store the answer in the 'playerAnswer' variable
+                //******************************************************************************************************
+                //display a message asking the user what the capital of a state is and store the answer in the 'playerAnswer' variable
                 playerAnswer = JOptionPane.showInputDialog(null, quiz.getQuestion(), "Capitals Quiz",
                         JOptionPane.QUESTION_MESSAGE);
 
-        //**************************************************************************************************************
-        // check if the user input a value and if not, display an error
+                //******************************************************************************************************
+                // check if the user input a value and if not, display an error
                 if (playerAnswer.equals("")) {
                     JOptionPane.showMessageDialog(null, "Error\n\nYou Didn't input an answer.\n",
                             "Capitals Quiz", JOptionPane.ERROR_MESSAGE);
@@ -87,8 +77,8 @@ public class QuizUI {
 
             } while (playerAnswer.equals(""));
 
-        //**************************************************************************************************************
-        //if the user got the correct answer, display a message stating they got the answer correct
+            //**********************************************************************************************************
+            //if the user got the correct answer, display a message stating they got the answer correct
             if (playerAnswer.equalsIgnoreCase(quiz.getAnswer())) {
                 JOptionPane.showMessageDialog(null, "Correct!\n\nYou got the right answer.\n",
                         "Capitals Quiz", JOptionPane.INFORMATION_MESSAGE);
@@ -97,37 +87,33 @@ public class QuizUI {
                 numRight++;
             }
 
-        //**************************************************************************************************************
-        //if the user got the incorrect answer, display a message stating the answer is incorrect and show the correct answer
+            //**********************************************************************************************************
+            //if the user got the incorrect answer, display a message stating the answer is incorrect and show the correct answer
             if (!playerAnswer.equalsIgnoreCase(quiz.getAnswer())) {
                 JOptionPane.showMessageDialog(null, "Incorrect!\n\nThe correct answer is "
                         + quiz.getAnswer() + "\n\n", "Capitals Quiz", JOptionPane.ERROR_MESSAGE);
 
-        //**************************************************************************************************************
-        //increment the number of question incorrect
+                //******************************************************************************************************
+                //increment the number of question incorrect
                 numWrong++;
             }
 
-        //**************************************************************************************************************
-        //increment the number of games played
+            //**********************************************************************************************************
+            //increment the number of games played
             totalQuestions++;
 
-        //**************************************************************************************************************
-        //Set total questions asked
+            //**********************************************************************************************************
+            //Set total questions asked
             quiz.setTotalQuestions(totalQuestions);
 
-        //**************************************************************************************************************
-        //display a message asking the user if they would like to answer another question.
+            //**********************************************************************************************************
+            //display a message asking the user if they would like to answer another question.
             playAgain = JOptionPane.showConfirmDialog(null, "Do you want to try another question?",
                     "Capitals Quiz", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         //**************************************************************************************************************
         //if the user chooses 'Yes', restart the loop
         } while (playAgain == 0);
-
-        //**************************************************************************************************************
-        //Create a new Quiz object
-        Quiz quiz = new Quiz(totalQuestions, numRight);
 
         //**************************************************************************************************************
         //call quiz class to calculate
